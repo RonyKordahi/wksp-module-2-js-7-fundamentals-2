@@ -4,14 +4,14 @@
 // source: https://www.insider.com/most-popular-foods-grubhub-2018-12
 
 var mostPopularFood = [
-    'poke bowl',
-    'chicken sliders',
-    'pork baby back ribs',
-    'chicken burritos',
-    'chicken sandwich',
-    'cauliflower rice bowl',
-    'chicken and waffle sliders',
-    'parmesan chicken',
+    'poke bowl', //2
+    'chicken sliders', //3 
+    'pork baby back ribs', //4
+    'chicken burritos', //5 
+    'chicken sandwich', //6 
+    'cauliflower rice bowl', //7
+    'chicken and waffle sliders', //8
+    'parmesan chicken', //9
     undefined,
 ];
 
@@ -25,3 +25,14 @@ var mostPopularFood = [
 // Output them in a tidy top-ten fashion in the console.
 
 // NO for loops!
+
+let counter = 0;
+let remove = mostPopularFood.length
+
+mostPopularFood.unshift("bean burrito");
+mostPopularFood.splice(remove, 1, "buffalo-flavored cauliflower");
+
+mostPopularFood.forEach(function() {
+    console.log(`#${counter + 1}: ${mostPopularFood[counter]}`);
+    ++counter;
+})

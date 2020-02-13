@@ -10,3 +10,12 @@ const colors = ["red", "orange", "yellow", "green", "pink", "black", "gray", "bl
 
 // You must console the colors array.
 // NO for loops!
+
+const spectrum = ["red", "orange", "yellow", "green", "blue", "violet"];
+
+let search = colors.filter(function(color) {
+    let doesInclude = spectrum.includes(color);
+    return doesInclude;
+});
+
+console.log(search);

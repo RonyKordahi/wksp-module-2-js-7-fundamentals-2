@@ -11,3 +11,18 @@ const earlyBirds = ["Ellen", "Jerry", "Jasmine"];
 // Output them in a tidy list from first to last arrival the console.
 
 // NO for loops!
+
+// const partyGuests = earlyBirds + lateComers;
+const partyGuests = []
+
+earlyBirds.forEach(function(guest) {
+    partyGuests.push(guest);
+});
+
+lateComers.forEach(function(guest){
+    partyGuests.push(guest);
+});
+
+partyGuests.forEach((guest, id) => {
+    console.log(`#${id + 1}: ${guest}`);
+})
