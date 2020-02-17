@@ -28,29 +28,35 @@ var favoriteDessert = {
 //      2. <DESSERT_NAME>
 //      ...
 
-let desserts = Object.values(favoriteDessert);
-let ranking = [];
-let dessertCounter = 0;
-let sortedRankings = [];
+const dessertsArray = Object.values(favoriteDessert).sort();
+const countedDesserts = {};
+const rankedDesserts = [];
 
-for (let i = 0; i < desserts.length; ++i) {
-    let currentDessert = {};
-    if (currentDessert[desserts[i]] === undefined){
-        currentDessert[desserts[i]] = 0;
+dessertsArray.forEach(dessert => {
+    let count = 0;
+    dessertsArray.forEach(dup => {
+        if (dessert === dup) count += 1;
+    });
+    countedDesserts[dessert] = count;
+});
 
-        for (let j = 0; j < desserts.length; ++j) {
-            if (desserts[j] === desserts[i]) {
-                ++dessertCounter;
-            }
-        }
-        currentDessert[desserts[i]] = dessertCounter;
+Object.values(countedDesserts).forEach((dessertCount, id) => {
+    const dessertName = Object.keys(countedDesserts)[id];
+    rankedDesserts.push({
+        dessertName: dessertName,
+        dessertCount: dessertCount
+    });
+});
 
-    }
-    dessertCounter = 0;
-    ranking[i] = currentDessert;
-}
+rankedDesserts.sort((a, b) => a.dessertCount < b.dessertCount ? 1 : -1);
 
-console.log(ranking);
+console.log('--------------------------------------------');
+console.log('A) Dessert ranked from most to least popular.');
+console.log('--------------------------------------------');
+rankedDesserts.forEach((item, id) => {
+    console.log(`  ${id + 1}. ${item.dessertName}`);
+});
+console.log('--------------------------------------------');
 
 // B)
 // The names of those that said the same desserts. Output the list in
@@ -58,3 +64,14 @@ console.log(ranking);
 // e.g. - brownies: <NAME>, <NAME>, ...
 //      - ice-cream: <NAME>, <NAME>, <NAME>, ...
 //      ...
+
+console.log('B) Who chose the same dessert?');
+console.log('--------------------------------------------');
+Object.keys(countedDesserts).forEach(dessert => {
+    let names = [];
+    Object.keys(favoriteDessert).forEach(name => {
+        if (favoriteDessert[name] === dessert) names.push(name);
+    });
+    console.log(`  - ${dessert}: ${names.join(', ')}`);
+});
+console.log('--------------------------------------------');
