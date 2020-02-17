@@ -32,24 +32,6 @@ let desserts = Object.values(favoriteDessert);
 let ranking = [];
 let dessertCounter = 0;
 let sortedRankings = [];
-let finalArray = [];
-desserts.forEach(function(dessert){
-    console.log("finalArray.includes(dessert) : ",finalArray.includes(dessert));
-    console.log(finalArray)
-    if(!finalArray.includes(function (element) {
-        return element.name === dessert;
-    })){
-        finalArray.push({name: dessert, vote: 0});
-    }
-    else {
-        let found = finalArray.find(element => element.name === dessert);
-        console.log("found : ",found)
-        found.vote++;
-        console.log("found : ",found)
-    }
-})
-
-console.log("finalArray ",finalArray);
 
 for (let i = 0; i < desserts.length; ++i) {
     let currentDessert = {};
@@ -68,7 +50,7 @@ for (let i = 0; i < desserts.length; ++i) {
     ranking[i] = currentDessert;
 }
 
-//console.log(ranking);
+console.log(ranking);
 
 // B)
 // The names of those that said the same desserts. Output the list in
