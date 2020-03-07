@@ -53,3 +53,11 @@ const staffMembers = [
 // Write a line that will print the JavaScript level for employee Chuck Taylor.
 
 // You will need both Array and Object syntax.
+
+let name = "Chuck Taylor";
+
+for (let i = 0; i < staffMembers.length; ++i) {
+    if (staffMembers[i].name === name) {
+        console.log(staffMembers[i].skillLevels.javascript);
+    }
+}
